@@ -105,8 +105,9 @@ const SeccionComentarios = ({ eventoId }) => {
       setComentarios(comentarios.filter((c) => c._id !== comentarioId));
       alert("Comentario eliminado");
     } catch (error) {
-      alert("Error al eliminar comentario");
-    }
+        console.error("Error al eliminar comentario:", error);
+        alert("Error al eliminar comentario");
+}
   };
 
   const renderEstrellas = (cantidad, esInput = false, onChange = null) => {
