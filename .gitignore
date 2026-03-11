@@ -1,0 +1,17 @@
+# Ignorar dependencias y archivos temporales
+node_modules/
+dist/
+build/
+.env
+.vscode/
+.DS_Store
+*.log
+*.tmp
+*.cache
+
+# Ignorar dependencias en frontend y backend
+frontend/node_modules/
+backend/node_modules/
+frontend/dist/
+frontend/build/
+backend/dist/
