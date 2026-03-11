@@ -41,7 +41,7 @@ const SeccionComentarios = ({ eventoId }) => {
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post(
+      await axios.post(
         "http://localhost:5000/api/comentarios",
         {
           evento: eventoId,
