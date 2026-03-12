@@ -147,3 +147,15 @@ jobs:
           scan-type: fs
           scan-ref: .
           severity: HIGH,CRITICAL
+
+  package:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    needs: security
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t perufest-app .
