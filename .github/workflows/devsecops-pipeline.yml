@@ -157,5 +157,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build Docker image
-        run: docker build -t perufest-app .
+      - name: Build backend image
+        run: docker build -t perufest-backend ./backend
+
+      - name: Build frontend image
+        run: docker build -t perufest-frontend ./frontend
