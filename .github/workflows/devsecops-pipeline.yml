@@ -185,13 +185,10 @@ jobs:
       - name: Verify containers
         run: docker ps
 
-      - name: Wait for services
-        run: sleep 30
-
       - name: Wait for frontend
         run: |
           for i in {1..30}; do
-            curl -s http://localhost:5173 && break
+            docker exec $(docker ps -qf "name=frontend") curl -s http://localhost:5173 && break
             echo "Waiting for frontend..."
             sleep 5
           done
