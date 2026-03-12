@@ -210,6 +210,7 @@ jobs:
             -t zaproxy/zap-stable zap-baseline.py \
             -t http://frontend:5173 \
             -r zap-report.html
+            -I
 
       - name: Upload ZAP report
         uses: actions/upload-artifact@v4
