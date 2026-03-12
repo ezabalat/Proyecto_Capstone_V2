@@ -127,3 +127,23 @@ jobs:
       - name: Run frontend tests
         working-directory: frontend
         run: npm test --if-present
+
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run dependency audit
+        run: npm audit --audit-level=critical || true
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.20.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          severity: HIGH,CRITICAL
