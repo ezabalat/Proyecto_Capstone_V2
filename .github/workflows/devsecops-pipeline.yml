@@ -184,3 +184,20 @@ jobs:
 
       - name: Verify containers
         run: docker ps
+
+      - name: Wait for services
+        run: sleep 30
+
+      - name: Run DAST scan with OWASP ZAP
+        run: |
+          docker run --network host \
+          -t owasp/zap2docker-stable zap-baseline.py \
+          -t http://localhost:5173 \
+          -r zap-report.html
+
+      - name: Upload ZAP report
+        uses: actions/upload-artifact@v4
+        with:
+          name: zap-report
+          path: zap-report.html
+
